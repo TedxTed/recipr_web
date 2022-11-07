@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="py-2 border-b-2 border-gray-500">
+  <ul class="flex justify-between">
+    <% if user_signed_in? %>
+      <div class="flex">
+        <li>
+          <%= link_to "新增", new_recipe_path %>
+        </li>
+      </div>
+      <div class="flex">
+        <li class="mr-2"><%= current_user.email %></li>
+      </div>
+    <% else %>
+      <div>
+        <li><%= link_to "首頁", "/" %></li>
+      </div>
+      <div class="flex">
+        <li class="mr-3"><%= link_to "登入",  new_user_session_path %></li>
+        <li><%= link_to "註冊",  new_user_registration_path %></li>
+      </div>
+    <% end %>
+  </ul>
+</nav>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+
   </body>
 </html>
