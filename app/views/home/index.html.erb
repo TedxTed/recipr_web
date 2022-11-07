@@ -8,6 +8,7 @@
     <%= link_to 'New recipe', new_recipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+
   <div class="flex justify-between items-center">
    <%= form_with url: recepies_search_path , method: :get do |form| %>
       <%= form.label :key, "Search for:" %>
@@ -19,11 +20,14 @@
   <div id="recipes" class="min-w-full">
     <% @recipes.each do |recipe| %>
       <div >
+
         <p class="my-5">
           <strong class="block font-medium mb-1">Title:</strong>
           <%= recipe.title %>
         </p>
-
+        <div data-controller="like"  >
+          <span class="like" ></span>
+        </div>
         <p class="my-5">
           <strong class="block font-medium mb-1">Cover:</strong>
           <%= recipe.cover %>

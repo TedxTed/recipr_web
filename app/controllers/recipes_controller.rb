@@ -63,6 +63,12 @@ class RecipesController < ApplicationController
     render 'home/index'
   end
 
+  def count
+    # recipe_user = User.find(params[:user_id])
+    # @count = recipe_user.recepies.count
+    render json: { "status": 'ok' }
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
