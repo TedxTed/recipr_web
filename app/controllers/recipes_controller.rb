@@ -56,6 +56,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    p params[:key]
+    # debugger
+    @recipes = Recipe.where('title LIKE ?', "%#{params[:key]}%")
+    render 'home/index'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
